@@ -10,6 +10,8 @@ class User(Base):
     username = Column(String(50), index=True)
     password = Column(Text, index=True)
 
+    events = relationship("Event", back_populates="user")
+
 class Event(Base):
     __tablename__ = "events"
 
