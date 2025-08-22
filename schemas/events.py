@@ -3,8 +3,8 @@ from pydantic import BaseModel
 
 class EventCreate(BaseModel):
     title: str
-    started_at: datetime
-    ended_at: datetime
+    start_time: datetime
+    end_time: datetime
     user_id: int
 
 class EventOut(EventCreate):
@@ -14,7 +14,8 @@ class EventOut(EventCreate):
         from_attributes = True
 
 class EventUpdate(BaseModel):
+    id: int
     title: str | None = None
-    started_at: datetime | None = None
-    ended_at: datetime | None = None
+    start_time: datetime | None = None
+    end_time: datetime | None = None
     user_id: int | None = None
