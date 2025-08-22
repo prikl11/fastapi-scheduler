@@ -54,6 +54,9 @@ def delete_event_route(db: SessionDep, event_id: int):
 @app.get("/events.ics")
 def export_events(db: SessionDep, user_id: int):
     events = db.query(Event).filter(Event.user_id == user_id).all()
+    if not events:
+        return {"message": "Events not found"}
+    
     ics_file = generate_ics(events)
     return StreamingResponse(ics_file,
                              media_type="text/calendar",
