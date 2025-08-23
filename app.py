@@ -1,6 +1,7 @@
 from datetime import datetime
 from fastapi import FastAPI, Depends
 from typing import Annotated
+from fastapi.openapi.docs import get_swagger_ui_html
 from database import get_db, Base, engine
 from sqlalchemy.orm import Session
 from schemas import UserOut, EventOut, UserCreate, EventCreate, EventUpdate
@@ -19,9 +20,9 @@ Base.metadata.create_all(bind=engine)
 
 SessionDep = Annotated[Session, Depends(get_db)]
 
-@app.get("/")
-def read_root():
-    return {"message:" "FastAPI is working!"}
+@app.get("/", include_in_schema=False)
+async def root():
+    return get_swagger_ui_html(openapi_url="/openapi.json", title="API Docs")
 
 @app.on_event("startup")
 def start_scheduler():
