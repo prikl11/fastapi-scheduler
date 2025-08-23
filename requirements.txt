@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standart]
+passlib[bcrypt]
+sqlalchemy
+psycopg2-binary
+python-telegram-bot==20.3
+apscheduler
+python-dotenv
+pytz
+pydantic[email]
+ics
+datetime
+pydantic
+ics
