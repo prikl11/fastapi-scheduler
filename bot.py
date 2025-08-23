@@ -1,11 +1,10 @@
 import pytz
 from sqlalchemy.orm import Session
-from datetime import datetime, timezone
+from datetime import datetime
 import os
 from dotenv import load_dotenv
 from telegram import Bot
 from database import SessionLocal
-
 from models import Reminder
 
 load_dotenv()
