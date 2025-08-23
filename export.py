@@ -1,7 +1,5 @@
 from ics import Calendar, Event as ICSEvent
-from fastapi.responses import StreamingResponse
 from io import StringIO
-from datetime import datetime
 
 def generate_ics(events):
     c = Calendar()
