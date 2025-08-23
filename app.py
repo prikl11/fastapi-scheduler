@@ -9,11 +9,11 @@ from models import Event
 from export import generate_ics
 from fastapi.responses import StreamingResponse
 from bot import create_reminder, send_reminders
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 app = FastAPI()
 
-scheduler = BackgroundScheduler()
+scheduler = AsyncIOScheduler()
 
 Base.metadata.create_all(bind=engine)
 
